@@ -45,11 +45,20 @@ function createCards() {
     cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
+
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
   // Your Code
+
+  //Show/Hide button
+  const btnWrapper =  document.querySelector('.btn-wrapper');
+  const showHideButton = document.createElement('button');
+  showHideButton.innerHTML = 'Show/Hide';
+  showHideButton.classList.add('show','btn', 'btn-lg', 'btn-secondary');
+  btnWrapper.append(showHideButton);
+  showHideButton.addEventListener('click', flip);
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -57,6 +66,16 @@ function createButtons() {
 function startGame() {
   createButtons();
   createCards();
+
+  //Delete Let's get started button
+  const letsGetStarted =  document.getElementById('start-game');
+  letsGetStarted.style.display = 'none';
 }
+
+//Function to flip between face up and face down
+function flip (){
+  cardsWrapper.classList.toggle('hidden');
+}
+
 
 document.getElementById('start-game').addEventListener('click', startGame);
