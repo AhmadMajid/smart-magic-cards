@@ -66,6 +66,13 @@ function createButtons() {
   shuffle.classList.add('btn', 'btn-lg', 'btn-secondary');
   btnWrapper.append(shuffle);
   shuffle.addEventListener('click', stackShuffle);
+
+  //Magic button
+  const magic = document.createElement('magic');
+  magic.innerHTML = 'Magic';
+  magic.classList.add('btn', 'btn-lg', 'btn-secondary');
+  btnWrapper.append(magic);
+  magic.addEventListener('click', magicSpell);
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -101,6 +108,11 @@ function stackShuffle() {
     cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
+}
+
+//Function for magic!
+function magicSpell(){
+  createCards();
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
