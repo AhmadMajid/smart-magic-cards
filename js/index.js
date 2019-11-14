@@ -1,4 +1,4 @@
-const suit = 'hearts';
+// const suit = 'hearts';
 const cardsWrapper = document.querySelector('.cards-wrapper');
 
 function createCards() {
@@ -7,7 +7,31 @@ function createCards() {
   for (let i = 1; i <= 13; i += 1) {
     const cardObject = {
       value: i,
-      suit,
+      suit: 'spades'
+    };
+    cards.push(cardObject);
+  }
+
+  for (let i = 1; i <= 13; i += 1) {
+    const cardObject = {
+      value: i,
+      suit: 'hearts'
+    };
+    cards.push(cardObject);
+  }
+
+  for (let i = 1; i <= 13; i += 1) {
+    const cardObject = {
+      value: i,
+      suit: 'clubs'
+    };
+    cards.push(cardObject);
+  }
+
+  for (let i = 1; i <= 13; i += 1) {
+    const cardObject = {
+      value: i,
+      suit: 'diamonds'
     };
     cards.push(cardObject);
   }
