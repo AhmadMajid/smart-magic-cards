@@ -45,7 +45,7 @@ function createCards() {
     cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
-
+  return cards;
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
@@ -59,6 +59,13 @@ function createButtons() {
   showHideButton.classList.add('show','btn', 'btn-lg', 'btn-secondary');
   btnWrapper.append(showHideButton);
   showHideButton.addEventListener('click', flip);
+
+  //Shuffle button
+  const shuffle = document.createElement('button');
+  shuffle.innerHTML = 'Shuffle';
+  shuffle.classList.add('btn', 'btn-lg', 'btn-secondary');
+  btnWrapper.append(shuffle);
+  shuffle.addEventListener('click', stackShuffle);
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -77,5 +84,23 @@ function flip (){
   cardsWrapper.classList.toggle('hidden');
 }
 
+//Function to shuffle cards
+function stackShuffle() {
+  const cards = createCards();
+  let count = cards.length;
+  while(count) {
+    cards.push(cards.splice(Math.floor(Math.random() * count), 1)[0]);
+    count -= 1;
+  }
+
+  cards.forEach((card, i) => {
+    const positionFromLeft = i * 30;
+    const cardElement = document.createElement('div');
+    cardElement.setAttribute('data-value', card.value);
+    cardElement.classList.add('card', `${card.suit}-${card.value}`);
+    cardElement.style.left = `${positionFromLeft}px`;
+    cardsWrapper.append(cardElement);
+  });
+}
 
 document.getElementById('start-game').addEventListener('click', startGame);
